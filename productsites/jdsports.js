@@ -4,7 +4,7 @@ async function Jdsports() {
 
     const products = []
 
-    let browser = await chromium.launch({ headless: false, });
+    let browser = await chromium.launch({ headless: true, });
     let page = await browser.newPage()
     const url = "https://www.jdsports.com/sneaker-release-dates"
 

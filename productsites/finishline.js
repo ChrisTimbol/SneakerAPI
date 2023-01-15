@@ -4,7 +4,7 @@ async function Finishline() {
 
     const products = []
 
-    let browser = await chromium.launch({ headless: false, });
+    let browser = await chromium.launch({ headless: true, });
     let page = await browser.newPage()
     const url = "https://www.finishline.com/store/sneaker-release-dates"
 
