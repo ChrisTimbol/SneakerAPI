@@ -30,12 +30,15 @@ async function Jdsports() {
         productCard['product'] = productName[i]
         productCard['date'] = await productDate[i].getAttribute('data-releasedate')
         productCard['style'] = productStyle[i]
+        productCard['price'] = "Not Available"
         productCard['img'] = productImage[i] ? await productImage[i].getAttribute('src') : "Not Available"
         productCard['link'] = "Not Available"
-        productCard['price'] = "Not Available"
+
         products.push(productCard)
     }
+
     browser.close()
+
     return products
 }
 

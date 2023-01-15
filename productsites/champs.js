@@ -24,7 +24,6 @@ async function Champs() {
   const productLink = await page.locator("a[class='ReleaseProduct-Link']").all()
   const productImage = await page.locator("div[class='ReleaseProduct-Image'] > span[class='Image'] > span[class='LazyLoad is-visible'] > img").all()
 
-
   for (let i = 0; i < await page.locator("div[class='ReleaseProduct-Image'] > span[class='Image'] > span[class='LazyLoad is-visible'] > img").count(); i++) {
     const productCard = {}
     productCard['site'] = url
@@ -32,11 +31,10 @@ async function Champs() {
     productCard['date'] = productDate[i]
     productCard['style'] = productStyle[i]
     productCard['price'] = productPrice[i]
-    productCard['productlink'] = "https://www.champssports.com/" + await productLink[i].getAttribute('href')
     productCard['img'] = await productImage[i].getAttribute('src')
+    productCard['link'] = "https://www.champssports.com/" + await productLink[i].getAttribute('href')
 
     products.push(productCard)
-
   }
   browser.close() 
 

@@ -18,21 +18,23 @@ async function Nike() {
     // arrays of locators for each product
     const dayDates = await page.locator("p[class='headline-1']").allTextContents()
     const monthDates = await page.locator("p[class='headline-4']").allTextContents()
-    const nikebrand = await page.locator("h3[class='headline-5']").allTextContents()
-    const nikeproduct = await page.locator("h6[class='headline-3']").allTextContents()
-    const nikeLinks = await page.locator(" a[data-qa='product-card-link']").all()
-    const nikeImg = await page.locator('img[class="image-component mod-image-component u-full-width"]').all()
+    const productStyle = await page.locator("h3[class='headline-5']").allTextContents()
+    const productName = await page.locator("h6[class='headline-3']").allTextContents()
+    const productLink = await page.locator(" a[data-qa='product-card-link']").all()
+    const productImage = await page.locator('img[class="image-component mod-image-component u-full-width"]').all()
 
     // create a productCard of extracted data then push onto product arr
     // i=index of each product
     for (let i = 0; i < await page.locator('img[class="image-component mod-image-component u-full-width"]').count(); i++) {
         const productCard = {} // layout data of each individual product\
         productCard['site'] = url
-        productCard['product'] = nikeproduct[i]
-        productCard['brand'] = nikebrand[i]
+        productCard['product'] = productName[i]
         productCard['date'] = monthDates[i] + " " + dayDates[i]
-        productCard['link'] = "https://www.nike.com/" + await nikeLinks[i].getAttribute('href')
-        productCard['img'] = await nikeImg[i].getAttribute('src')
+        productCard['style'] = productStyle[i]
+        productCard['price'] = "Not Available"
+        productCard['img'] = await productImage[i].getAttribute('src')
+        productCard['link'] = "https://www.nike.com/" + await productLink[i].getAttribute('href')
+
         products.push(productCard)
     }
 

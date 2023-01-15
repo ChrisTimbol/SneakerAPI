@@ -29,14 +29,15 @@ async function FootLocker() {
         productCard['GenderStyle'] = productGenderStyles[i]
         productCard['product'] = productName[i]
         productCard['price'] = productPrice[i]
-        productCard['link'] = "https://www.footlocker.com" + await productLink[i].getAttribute('href')
         productCard['img'] = await productImage[i].getAttribute('src')
+        productCard['link'] = "https://www.footlocker.com" + await productLink[i].getAttribute('href')
+
         products.push(productCard)
     }
 
-     browser.close() 
+    browser.close()
 
-    return products 
+    return products
 }
 
 module.exports = {
