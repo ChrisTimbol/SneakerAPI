@@ -4,9 +4,9 @@ async function FootLocker() {
 
     const products = []
 
-    let browser = await chromium.launch({ headless: true, });
+    let browser = await chromium.launch({ headless: false, });
     let page = await browser.newPage()
-    let url = "https://www.footlocker.com/release-dates"
+    const url = "https://www.footlocker.com/release-dates"
 
     // scroll page to make sure we get all products
     await page.goto(url)
@@ -24,6 +24,7 @@ async function FootLocker() {
 
     for (let i = 0; i < await page.locator("div[class='ReleaseProduct-Image'] > span[class='Image'] > span[class='LazyLoad is-visible'] > img").count(); i++) {
         const productCard = {}
+        productCard['site'] = url
         productCard['date'] = productDate[i]
         productCard['GenderStyle'] = productGenderStyles[i]
         productCard['product'] = productName[i]
@@ -33,8 +34,9 @@ async function FootLocker() {
         products.push(productCard)
     }
 
-    browser.close()
-    return products
+     browser.close() 
+
+    return products 
 }
 
 module.exports = {

@@ -26,7 +26,8 @@ async function Nike() {
     // create a productCard of extracted data then push onto product arr
     // i=index of each product
     for (let i = 0; i < await page.locator('img[class="image-component mod-image-component u-full-width"]').count(); i++) {
-        const productCard = {} // layout data of each individual product
+        const productCard = {} // layout data of each individual product\
+        productCard['site'] = url
         productCard['product'] = nikeproduct[i]
         productCard['brand'] = nikebrand[i]
         productCard['date'] = monthDates[i] + " " + dayDates[i]
@@ -36,6 +37,7 @@ async function Nike() {
     }
 
     browser.close()
+ /*    if(!products) return "Error Captcha wall" */
     return products
 }
 
