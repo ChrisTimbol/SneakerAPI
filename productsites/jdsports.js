@@ -10,9 +10,9 @@ async function Jdsports() {
 
     // scroll page to make sure we get all products
     await page.goto(url)
-    await page.keyboard.press('End', { delay: 1000 });
-    await page.waitForTimeout(2000);
-    await page.keyboard.press('Home', { delay: 1000 });
+    await page.keyboard.press('End');
+    await page.waitForTimeout(1000);
+    await page.keyboard.press('Home');
 
     // arrays of locators for each product
     const productDate = await page.locator("div[class='row releaseProduct  pt-4 pb-3']").all() // selects all locators with locator class name
