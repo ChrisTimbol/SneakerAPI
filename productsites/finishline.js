@@ -36,7 +36,6 @@ async function Finishline() {
 
         products.push(productCard)
     }
-    console.log(products)
     browser.close()
 
     return products
