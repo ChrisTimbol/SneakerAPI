@@ -11,12 +11,12 @@ const app = express()
 const port = 3000
 
 // creates a server to host the data at localhost:port
-app.get('/', async (req, res) => {
+/* app.get('/', async (req, res) => {
     res.sendFile(path.join(__dirname, '/index.html'));
 
-})
+}) */
 
-app.get('/api', async (req, res) => {
+app.get('/', async (req, res) => {
     productResults.push(await Nike())
     productResults.push(await FootLocker())
     productResults.push(await Champs())
