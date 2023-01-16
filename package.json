@@ -9,6 +9,7 @@
  
 
   "scripts": {
+    "build": "npx playwright install",
     "start": "node index.js"
   },
   "keywords": [],
