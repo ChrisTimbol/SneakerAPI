@@ -21,10 +21,11 @@ app.get('/', async (req, res) => {
 
 app.get('/', async (req, res) => {
     productResults.push(await Nike())
-        productResults.push(await FootLocker())
+/*      productResults.push(await FootLocker())
         productResults.push(await Champs())
         productResults.push(await Jdsports())
-        productResults.push(await Finishline())
+        productResults.push(await Finishline()) 
+*/
     res.json(productResults)
 
 })

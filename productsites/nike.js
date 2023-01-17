@@ -1,4 +1,4 @@
-const { chromium } = require("playwright");
+const { chromium } = require("playwright-chromium");
 
 /* const awsChromium = require('chrome-aws-lambda'); */
 
@@ -17,7 +17,7 @@ async function Nike() {
     await page.waitForTimeout(1000);
     await page.keyboard.press('Home');
 
-    const dayDates = await page.locator("p[class='headline-1']").allTextContents()    // arrays of locators for each product
+    const dayDates = await page.locator("p[class='headline-1']").allTextContents()
     const monthDates = await page.locator("p[class='headline-4']").allTextContents()
     const productStyle = await page.locator("h3[class='headline-5']").allTextContents()
     const productName = await page.locator("h6[class='headline-3']").allTextContents()
