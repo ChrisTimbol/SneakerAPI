@@ -32,4 +32,5 @@ app.get('/', async (req, res) => {
 app.listen(port, () => {
     console.log(`ready on http://localhost:${port}`)
 })
+
 module.exports = app
