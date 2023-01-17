@@ -1,12 +1,13 @@
-const { chromium } = require('playwright');
-
+const { chromium } = require('playwright'); 
+const awsChromium = require('chrome-aws-lambda');
 
 async function Nike() {
 
     const products = [] // stores all product cards
 
     const url = "https://www.nike.com/si/launch?s=upcoming"
-    let browser = await chromium.launch({ headless: true, });
+    let browser = await chromium.launch({ headless: true, 
+        executablePath: await awsChromium.executablePath });
     let page = await browser.newPage()
 
     // scroll page to make sure we get all products
