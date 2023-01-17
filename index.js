@@ -22,7 +22,7 @@ const port = process.env.PORT || 3000
 }) */
 
 app.get('/', async (req, res) => {
-try{
+/* try{ */
 
 
     productResults.push(await Nike())
@@ -31,9 +31,9 @@ try{
     productResults.push(await Jdsports())
     productResults.push(await Finishline()) */
     res.json(productResults)
-} catch{
+/* } catch{
     console.log("error 3")
-}
+} */
 })
 
 app.listen(port, () => {

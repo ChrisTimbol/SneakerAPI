@@ -1,5 +1,4 @@
-const { chromium } = require('playwright');
-
+const { chromium } = require("playwright-chromium");
 
 async function Champs() {
   const products = []

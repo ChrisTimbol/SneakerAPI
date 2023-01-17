@@ -6,7 +6,7 @@ async function Nike() {
 
     const products = [] // stores all product cards
     const url = "https://www.nike.com/si/launch?s=upcoming"
-    try {
+  /*   try { */
         let browser = await chromium.launch({
             headless: true,
             chromiumSandbox: false,
@@ -24,13 +24,13 @@ async function Nike() {
         const productName = await page.locator("h6[class='headline-3']").allTextContents()
         const productLink = await page.locator(" a[data-qa='product-card-link']").all()
         const productImage = await page.locator('img[class="image-component mod-image-component u-full-width"]').all()
-    }
+/*     }
     catch {
         console.log("error lol")
-    }
+    } */
     // create a productCard of extracted data then push onto product arr
     // i=index of each product
-    try {
+  /*   try { */
 
 
         for (let i = 0; i < await page.locator('img[class="image-component mod-image-component u-full-width"]').count(); i++) {
@@ -50,9 +50,9 @@ async function Nike() {
     
     /*    if(!products) return "Error Captcha wall" */
     return products
-    } catch {
+/*     } catch {
         console.log("error two")
-    }
+    } */
 
 }
 
