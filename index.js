@@ -16,7 +16,7 @@ const { Finishline } = require('./productsites/finishline.js');
     await page.goto('http://whatsmyuseragent.org/');
     await page.screenshot({ path: `chromium.png` });
     await browser.close();
-  })();
+  })().catch(error => { console.error("Something bad happend...", error); });;
 //const productResults = []
 /* const path = require('path'); */
 /* const express = require('express')
