@@ -1,9 +1,15 @@
 /* const { chromium } = require("playwright"); */
+const { chromium } = require("playwright-core"); 
+const playwright = require('playwright-aws-lambda');
 async function FootLocker() {
 
     const products = []
 
-    let browser = await chromium.launch({ headless: true, });
+    //let browser = await chromium.launch({ headless: true, });
+    const browser = await playwright.launchChromium({
+        headless: true,
+        chromiumSandbox: false,
+    });
     let page = await browser.newPage()
     const url = "https://www.footlocker.com/release-dates"
 
@@ -15,7 +21,7 @@ async function FootLocker() {
 
     // arrays of locators for each product
     const productDate = await page.locator("span[class='ProductReleaseDate']").allTextContents()
-    const productGenderStyles = await page.locator("p[class='ProductGenderStyles ProductGenderStyles--inProductCard']").allTextContents()
+    const productStyle = await page.locator("p[class='ProductGenderStyles ProductGenderStyles--inProductCard']").allTextContents()
     const productName = await page.locator("span[class='ProductName-primary']").allTextContents()
     const productPrice = await page.locator("span[class='ProductPrice']").allTextContents()
     const productLink = await page.locator("a[class='ReleaseProduct-Link']").all()
@@ -23,10 +29,9 @@ async function FootLocker() {
 
     for (let i = 0; i < await page.locator("div[class='ReleaseProduct-Image'] > span[class='Image'] > span[class='LazyLoad is-visible'] > img").count(); i++) {
         const productCard = {}
+        productCard['product'] = productStyle[i] + " " + productName[i]
         productCard['site'] = url
         productCard['date'] = productDate[i]
-        productCard['GenderStyle'] = productGenderStyles[i]
-        productCard['product'] = productName[i]
         productCard['price'] = productPrice[i]
         productCard['img'] = await productImage[i].getAttribute('src')
         productCard['link'] = "https://www.footlocker.com" + await productLink[i].getAttribute('href')

@@ -1,9 +1,15 @@
 /* const { chromium } = require("playwright"); */
+const { chromium } = require("playwright-core");  
+const playwright = require('playwright-aws-lambda');
 async function Finishline() {
 
     const products = []
 
-    let browser = await chromium.launch({ headless: true, });
+    //let browser = await chromium.launch({ headless: true, });
+    const browser = await playwright.launchChromium({
+        headless: true,
+        chromiumSandbox: false,
+    });
     let page = await browser.newPage()
     const url = "https://www.finishline.com/store/sneaker-release-dates"
 
@@ -25,10 +31,9 @@ async function Finishline() {
 
     for (let i = 0; i < await page.locator("div[class='row releaseProduct  pt-4 pb-3'] > div[class='column small-7 medium-5 productInfo pl-medium-4 pt-medium-2'] > h2[class='h4 hide-for-small-only displayName']").count(); i++) {
         const productCard = {}
+        productCard['product'] = productStyle[i] + " " + productName[i]
         productCard['site'] = url
-        productCard['product'] = productName[i]
         productCard['date'] = await productDate[i].getAttribute('data-releasedate')
-        productCard['style'] = productStyle[i]
         productCard['price'] = "Not Available"
         productCard['img'] = productImage[i] ? await productImage[i].getAttribute('src') : "Not Available"
         productCard['link'] = "Not Available"

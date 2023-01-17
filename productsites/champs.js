@@ -1,16 +1,22 @@
-/* const { chromium } = require("playwright");
- */
+//const { chromium } = require("playwright");
+
+const { chromium } = require("playwright-core");  
+const playwright = require('playwright-aws-lambda');
 async function Champs() {
   const products = []
 
-  let browser = await chromium.launch({ headless: true, });
+  // let browser = await chromium.launch({ headless: true, });
+  const browser = await playwright.launchChromium({
+    headless: true,
+    chromiumSandbox: false,
+  });
   let page = await browser.newPage()
   const url = "https://www.champssports.com/release-dates.html"
   await page.goto(url)
   // if page contains  div[aria-label="Click to verify"]
   // then click it
   // then do puzzle captcha
-  
+
   // scroll page to make sure we get all load all dynamic products
   await page.keyboard.press('End');
   await page.waitForTimeout(1000);
@@ -26,18 +32,17 @@ async function Champs() {
   for (let i = 0; i < await page.locator("div[class='ReleaseProduct-Image'] > span[class='Image'] > span[class='LazyLoad is-visible'] > img").count(); i++) {
     const productCard = {}
     productCard['site'] = url
-    productCard['product'] = productName[i]
+    productCard['product'] = productStyle[i] + " " + productName[i]
     productCard['date'] = productDate[i]
-    productCard['style'] = productStyle[i]
     productCard['price'] = productPrice[i]
     productCard['img'] = await productImage[i].getAttribute('src')
     productCard['link'] = "https://www.champssports.com/" + await productLink[i].getAttribute('href')
 
     products.push(productCard)
   }
-  browser.close() 
+  browser.close()
 
-  return products 
+  return products
 }
 
 module.exports = {

@@ -1,6 +1,5 @@
-/*  const { chromium } = require("playwright-core");  */
-
- const playwright = require('playwright-aws-lambda'); 
+const { chromium } = require("playwright-core");  
+const playwright = require('playwright-aws-lambda'); 
 
 async function Nike() {
 
@@ -29,9 +28,8 @@ async function Nike() {
     for (let i = 0; i < await page.locator('img[class="image-component mod-image-component u-full-width"]').count(); i++) {
         const productCard = {} // layout data of each individual product\
         productCard['site'] = url
-        productCard['product'] = productName[i]
+        productCard['product'] = productStyle[i] + " " +productName[i]
         productCard['date'] = monthDates[i] + " " + dayDates[i]
-        productCard['style'] = productStyle[i]
         productCard['price'] = "Not Available"
         productCard['img'] = await productImage[i].getAttribute('src')
         productCard['link'] = "https://www.nike.com/" + await productLink[i].getAttribute('href')
