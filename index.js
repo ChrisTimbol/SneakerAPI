@@ -8,7 +8,7 @@ const productResults = []
 const path = require('path');
 const express = require('express')
 const app = express()
-const port = process.env.port || 3000
+const port = process.env.PORT || 3000
 
 // creates a server to host the data at localhost:port
 /* app.get('/', async (req, res) => {
