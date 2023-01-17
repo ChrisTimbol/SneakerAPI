@@ -1,4 +1,4 @@
-const { chromium } = require('playwright');
+/* const { chromium } = require('playwright');
 
 (async () => {
 let browser = await chromium.launch({ headless: false, });
@@ -19,15 +19,6 @@ let day = await page.locator(" div[class='date fghfg'] > p[class='day']").allTex
 let shoeTitle = await page.locator(" div[class='collectionBlock-image lazyloaded']").getAttribute('title') 
 console.log(month)
 console.log(day)
-/* console.log(await page.locator("a[class='collectionBlock-image__link']").count())  */
-/* console.log(shoeTitle) 
-for (let i = 0; i < await page.locator("a[class='collectionBlock-image__link']").count(); i++) {
-    productCard['date'] = month[i] + " " + day[i]
-    productCard['product'] = nikeproduct[i]
-    productCard['link'] = "https://www.nike.com/" + await nikeLinks[i].getAttribute('href')
-    productCard['img'] = await nikeImg[i].getAttribute('src')
-}
 
-*/
 
-})()
+})() */
