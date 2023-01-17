@@ -21,7 +21,7 @@ app.get('/', async (req, res) => {
     const products = [] // stores all product cards
 
     const url = "https://www.nike.com/si/launch?s=upcoming"
-    let browser = await chromium.launch({ headless: true, });
+    let browser = await chromium.launch({ headless: true,  chromiumSandbox: false  });
     let page = await browser.newPage()
 
     // scroll page to make sure we get all products
