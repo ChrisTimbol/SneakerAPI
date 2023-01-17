@@ -25,6 +25,7 @@ app.get('/', async (req, res) => {
 /* try{ */
 
 
+
     productResults.push(await Nike())
 /*     productResults.push(await FootLocker())
     productResults.push(await Champs())
