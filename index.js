@@ -21,10 +21,15 @@ app.get('/', async (req, res) => {
     const products = [] // stores all product cards
 
     const url = "https://www.nike.com/si/launch?s=upcoming"
-    let browser = await chromium.launch({ headless: true,  chromiumSandbox: false  });
-    let page = await browser.newPage()
-
+    try {
+        let browser = await chromium.launch({ headless: true, chromiumSandbox: false });
+        let page = await browser.newPage()
+    }
+    catch{
+        console.log('browser error')
+    }
     // scroll page to make sure we get all products
+    try {
     await page.goto(url)
     await page.keyboard.press('End');
     await page.waitForTimeout(1000);
@@ -55,14 +60,17 @@ app.get('/', async (req, res) => {
 
     browser.close()
     res.send(products)
-/*     productResults.push(await Nike())
-    productResults.push(await FootLocker())
-    productResults.push(await Champs())
-    productResults.push(await Jdsports())
-    productResults.push(await Finishline()) 
-    res.send(productResults) 
-*/
-
+    /*     productResults.push(await Nike())
+        productResults.push(await FootLocker())
+        productResults.push(await Champs())
+        productResults.push(await Jdsports())
+        productResults.push(await Finishline()) 
+        res.send(productResults) 
+    */
+    }
+        catch{
+            console.log('everything else error')
+        }
 })
 
 app.listen(port, () => {
