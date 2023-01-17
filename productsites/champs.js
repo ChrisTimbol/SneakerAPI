@@ -17,8 +17,7 @@ async function Champs() {
   // then click it
   // then do puzzle captcha
 
-  // scroll page to make sure we get all load all dynamic products
-  await page.keyboard.press('End');
+  await page.keyboard.press('End');  // scroll page to make sure we get all load all dynamic products
   await page.waitForTimeout(1000);
   await page.keyboard.press('Home');
 
