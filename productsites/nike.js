@@ -36,7 +36,6 @@ async function Nike() {
         productCard['price'] = "Not Available"
         productCard['img'] = await productImage[i].getAttribute('src')
         productCard['link'] = "https://www.nike.com/" + await productLink[i].getAttribute('href')
-
         products.push(productCard)
     }
 
