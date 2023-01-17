@@ -15,6 +15,8 @@ const port = process.env.PORT || 3000
     res.sendFile(path.join(__dirname, '/index.html'));
 
 }) */
+try{
+
 
 app.get('/', async (req, res) => {
 
@@ -76,6 +78,9 @@ app.get('/', async (req, res) => {
 app.listen(port, () => {
     console.log(`ready on http://localhost:${port}`)
 })
-
+}
+catch{
+    console.log('wtf')
+}
 // export the express api
 module.exports = app
