@@ -1,9 +1,9 @@
 /* const { chromium } = require("playwright"); */
 const { chromium } = require("playwright-core");  
 const playwright = require('playwright-aws-lambda');
-async function Jdsports() {
+async function Jdsports(products) {
 
-    const products = []
+
 
     /*  let browser = await chromium.launch({ headless: true, }); */
     const browser = await playwright.launchChromium({
@@ -14,6 +14,7 @@ async function Jdsports() {
     const url = "https://www.jdsports.com/sneaker-release-dates"
 
     // scroll page to make sure we get all products
+    await page.pause()
     await page.goto(url)
     await page.keyboard.press('End');
     await page.waitForTimeout(1000);
