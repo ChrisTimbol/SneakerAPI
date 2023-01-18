@@ -1,12 +1,14 @@
 require('dotenv').config()
 const path = require('path');
 const express = require('express')
+const { Scrape } = require('./scrape.js')
+
 
 const app = express()
 const port = process.env.PORT || 3000
 app.get('/', async (req, res) => {
 
-    res.send('Hello World')
+    res.send(await Scrape())
 
 })
 app.listen(port, () => {

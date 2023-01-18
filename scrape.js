@@ -13,7 +13,8 @@ const { Jdsports } = require('./productsites/jdsports.js')
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@sneaker.1nvjvbv.mongodb.net/?retryWrites=true&w=majority`
 const client = new MongoClient(uri);
 const products = [];
-async function Scrape() {
+
+async function Scrape(){
     try {
         await Nike(products)
         await Finishline(products)
@@ -22,13 +23,18 @@ async function Scrape() {
         await Champs(products)
         await Jdsports(products)
         */
-    } catch (err) {
-        console.log(err + "error scraping")
+    } catch(err){
+        console.log(err)
     }
+    return products
 }
 
+module.exports = {
+    Scrape: Scrape,
+} 
 
-(async () => {
+
+/* (async () => {
     try {
         await Scrape();
 
@@ -43,6 +49,6 @@ async function Scrape() {
     }
 
 
-})().catch(console.dir)
+})().catch(console.dir) */
 
 
