@@ -6,9 +6,9 @@ const { Nike } = require('./productsites/nike.js')
 
 const app = express()
 const port = process.env.PORT || 3000
-
+const products = []
 app.get('/', async (req, res) => {
-    res.send(await Nike())
+    res.send(await Nike(products))
 
 })
 app.listen(port, () => {
