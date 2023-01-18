@@ -1,4 +1,7 @@
+require('dotenv').config()
 const express = require('express')
+const path = require('path');
+
 const app = express()
 const port = process.env.PORT || 3000
 app.get('/', async (req, res) => {
@@ -13,7 +16,6 @@ app.listen(port, () => {
 module.exports = app 
 
 
-const path = require('path');
 
 
 app.get('/', async (req, res) => {
