@@ -1,16 +1,10 @@
-/* const { chromium } = require("playwright"); */
-/* const { chromium } = require("playwright-core");  */
-const playwright = require('playwright-aws-lambda');
+const { chromium }  = require('playwright-chromium'); 
 
   //blocks ip if to many refresh
   
   
 async function FootLocker(products) {
-
- 
-
-    //let browser = await chromium.launch({ headless: true, });
-    const browser = await playwright.launchChromium({
+    const browser = await chromium.launch({
         headless: true,
         chromiumSandbox: false,
     });

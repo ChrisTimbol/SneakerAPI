@@ -1,12 +1,7 @@
-//const { chromium } = require("playwright");
-/* const { chromium } = require("playwright-core");   */
-const playwright = require('playwright-aws-lambda');
+const { chromium }  = require('playwright-chromium'); 
+
 async function Champs(products) {
-
-  //BLOCKS IP 
-
-  // let browser = await chromium.launch({ headless: true, });
-  const browser = await playwright.launchChromium({
+  const browser =  await chromium.launch({
     headless: false,
     chromiumSandbox: false,
   });

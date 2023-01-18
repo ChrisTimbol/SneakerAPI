@@ -1,15 +1,12 @@
-/* const { chromium } = require("playwright-core");   */
-const playwright = require('playwright-aws-lambda'); 
+const { chromium }  = require('playwright-chromium'); 
 
 async function Nike(products) {
-    const url = "https://www.nike.com/si/launch?s=upcoming"
-
-    const browser = await playwright.launchChromium({
+    const browser = await chromium.launch({
         headless: true,
         chromiumSandbox: false,
     });
-
-    let page = await browser.newPage()
+    const url = "https://www.nike.com/si/launch?s=upcoming"
+    const page = await browser.newPage()
 
     await page.goto(url)
     await page.keyboard.press('End', {delay: 1500});
@@ -37,6 +34,7 @@ async function Nike(products) {
     browser.close()
     return products
 }
+
 
 module.exports = {
     Nike: Nike,

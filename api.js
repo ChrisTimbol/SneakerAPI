@@ -25,4 +25,3 @@ app.get('/', async (req, res) => {
 
 }) 
  */
-//https://github.com/mxschmitt/heroku-playwright-buildpack.git

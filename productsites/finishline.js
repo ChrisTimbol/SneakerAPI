@@ -1,9 +1,9 @@
-const playwright = require('playwright-aws-lambda');
+const { chromium }  = require('playwright-chromium'); 
 
 async function Finishline(products) {
     const url = "https://www.finishline.com/store/sneaker-release-dates"
 
-    const browser = await playwright.launchChromium({
+    const browser = await chromium.launch({
         headless: true,
         chromiumSandbox: false,
     });
