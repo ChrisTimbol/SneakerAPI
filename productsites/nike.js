@@ -1,4 +1,4 @@
-const { chromium } = require("playwright-core");  
+/* const { chromium } = require("playwright-core");   */
 const playwright = require('playwright-aws-lambda'); 
 
 async function Nike(products) {

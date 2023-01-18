@@ -1,5 +1,5 @@
 /* const { chromium } = require("playwright"); */
-const { chromium } = require("playwright-core"); 
+/* const { chromium } = require("playwright-core");  */
 const playwright = require('playwright-aws-lambda');
 
   //blocks ip if to many refresh
