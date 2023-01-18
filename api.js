@@ -2,13 +2,13 @@ require('dotenv').config()
 const path = require('path');
 const express = require('express')
 const { Scrape } = require('./scrape.js')
-
+const { Nike } = require('./productsites/nike.js')
 
 const app = express()
 const port = process.env.PORT || 3000
-app.get('/', async (req, res) => {
 
-    res.send(await Scrape())
+app.get('/', async (req, res) => {
+    res.send(await Nike())
 
 })
 app.listen(port, () => {
