@@ -4,7 +4,7 @@ async function Finishline(products) {
     const url = "https://www.finishline.com/store/sneaker-release-dates"
 
     const browser = await playwright.launchChromium({
-        headless: false,
+        headless: true,
         chromiumSandbox: false,
     });
 
@@ -12,10 +12,7 @@ async function Finishline(products) {
 
     if (!page.locator("div[class='row releaseProduct  pt-4 pb-3']")) {  // pause if captcha
         await page.pause()
-        browser = await playwright.launchChromium({
-            headless: false,
-            chromiumSandbox: false,
-        });
+
     }
 
     await page.goto(url)
