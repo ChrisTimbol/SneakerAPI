@@ -1,24 +1,33 @@
-/* const { chromium } = require("playwright"); */
-const { chromium } = require("playwright-core");  
 const playwright = require('playwright-aws-lambda');
-async function Finishline() {
 
-    const products = []
-
-    //let browser = await chromium.launch({ headless: true, });
-    const browser = await playwright.launchChromium({
-        headless: true,
-        chromiumSandbox: false,
-    });
-    let page = await browser.newPage()
+async function Finishline(products) {
     const url = "https://www.finishline.com/store/sneaker-release-dates"
 
-    // scroll page to make sure we get all products
-    await page.goto(url)
-    await page.keyboard.press('End');
-    await page.waitForTimeout(1000);
-    await page.keyboard.press('Home');
+    const browser = await playwright.launchChromium({
+        headless: false,
+        chromiumSandbox: false,
+    });
 
+    let page = await browser.newPage()
+
+    if (!page.locator("div[class='row releaseProduct  pt-4 pb-3']")) {  // pause if captcha
+        await page.pause()
+        browser = await playwright.launchChromium({
+            headless: false,
+            chromiumSandbox: false,
+        });
+    }
+
+    await page.goto(url)
+/*     await page.pause() */
+    if(page.getByRole('document', { name: 'Enter your email to be the first to know about the latest drops and sales.' })) {
+        await page.getByRole('link', { name: 'close dialog' }).click() //exits popup
+    }
+    await page.keyboard.press('End', { delay: 1500 });
+    await page.keyboard.press('Home', { delay: 1500 });
+    await page.keyboard.press('End', { delay: 1500 });
+    await page.keyboard.press('Home', { delay: 1500 });
+    await page.keyboard.press('End', { delay: 1500 });
     // arrays of locators for each product
     const productDate = await page.locator("div[class='row releaseProduct  pt-4 pb-3']").all() // selects all locators with locator class name
     const productImage = await page.locator("div[class='row releaseProduct  pt-4 pb-3'] > div[class='column small-5 medium-5 flex-container rowProductImage productImage '] > img").all()
@@ -31,17 +40,15 @@ async function Finishline() {
 
     for (let i = 0; i < await page.locator("div[class='row releaseProduct  pt-4 pb-3'] > div[class='column small-7 medium-5 productInfo pl-medium-4 pt-medium-2'] > h2[class='h4 hide-for-small-only displayName']").count(); i++) {
         const productCard = {}
-        productCard['product'] = productStyle[i] + " " + productName[i]
         productCard['site'] = url
+        productCard['product'] = productStyle[i] + " " + productName[i]
         productCard['date'] = await productDate[i].getAttribute('data-releasedate')
         productCard['price'] = "Not Available"
         productCard['img'] = productImage[i] ? await productImage[i].getAttribute('src') : "Not Available"
         productCard['link'] = "Not Available"
-
         products.push(productCard)
     }
     browser.close()
-
     return products
 }
 
