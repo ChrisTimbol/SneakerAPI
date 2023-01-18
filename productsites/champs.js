@@ -1,22 +1,23 @@
 //const { chromium } = require("playwright");
-
 const { chromium } = require("playwright-core");  
 const playwright = require('playwright-aws-lambda');
-async function Champs() {
-  const products = []
+async function Champs(products) {
+
+  //BLOCKS IP 
 
   // let browser = await chromium.launch({ headless: true, });
   const browser = await playwright.launchChromium({
-    headless: true,
+    headless: false,
     chromiumSandbox: false,
   });
   let page = await browser.newPage()
   const url = "https://www.champssports.com/release-dates.html"
   await page.goto(url)
-  // if page contains  div[aria-label="Click to verify"]
-  // then click it
-  // then do puzzle captcha
+  await page.pause()
+  if(!page.locator("span[class='ProductReleaseDate']")){
+    await page.pause()
 
+} 
   await page.keyboard.press('End');  // scroll page to make sure we get all load all dynamic products
   await page.waitForTimeout(1000);
   await page.keyboard.press('Home');
