@@ -15,34 +15,35 @@ const client = new MongoClient(uri);
 const products = [];
 async function Scrape() {
     try {
-         await Nike(products) 
-         await Finishline(products) 
-       /*  await FootLocker(products) */
-  /*       await Champs(products)
+        await Nike(products)
+        await Finishline(products)
+        /*  
+        await FootLocker(products) 
+        await Champs(products)
         await Jdsports(products)
-         */
+        */
     } catch (err) {
         console.log(err + "error scraping")
     }
 }
 
 
-    (async () => {
-        try {
-            await Scrape();
-            
-            const database = client.db('sneakers')
-            const coll = database.collection('sneakerCollection')
-            for (let data of products) {
-                coll.updateOne({ data: data }, { $set: { data } }, { upsert: true })
+(async () => {
+    try {
+        await Scrape();
 
-            }
-        } finally {
-            await client.close();
+        const database = client.db('sneakers')
+        const coll = database.collection('sneakerCollection')
+        for (let data of products) {
+            coll.updateOne({ data: data }, { $set: { data } }, { upsert: true })
+
         }
+    } finally {
+        await client.close();
+    }
 
 
-    })().catch(console.dir)
+})().catch(console.dir)
 
 
 
