@@ -1,9 +1,7 @@
 const { chromium } = require("playwright-core");  
 const playwright = require('playwright-aws-lambda'); 
 
-async function Nike() {
-
-    const products = [] // stores all product cards
+async function Nike(products) {
     const url = "https://www.nike.com/si/launch?s=upcoming"
 
     const browser = await playwright.launchChromium({
@@ -14,9 +12,9 @@ async function Nike() {
     let page = await browser.newPage()
 
     await page.goto(url)
-    await page.keyboard.press('End');
-    await page.waitForTimeout(1000);
-    await page.keyboard.press('Home');
+    await page.keyboard.press('End', {delay: 1500});
+    await page.waitForTimeout(500);
+    await page.keyboard.press('Home', {delay: 1500});
 
     const dayDates = await page.locator("p[class='headline-1']").allTextContents()
     const monthDates = await page.locator("p[class='headline-4']").allTextContents()
@@ -26,7 +24,8 @@ async function Nike() {
     const productImage = await page.locator('img[class="image-component mod-image-component u-full-width"]').all()
 
     for (let i = 0; i < await page.locator('img[class="image-component mod-image-component u-full-width"]').count(); i++) {
-        const productCard = {} // layout data of each individual product\
+        const productCard = {}
+
         productCard['site'] = url
         productCard['product'] = productStyle[i] + " " +productName[i]
         productCard['date'] = monthDates[i] + " " + dayDates[i]
