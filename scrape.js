@@ -1,5 +1,5 @@
 require('dotenv').config()
-const { MongoClient, ServerApiVersion } = require('mongodb')
+const { MongoClient} = require('mongodb')
 const { Nike } = require('./productsites/nike.js')
 const { Finishline } = require('./productsites/finishline.js');
 const { FootLocker } = require('./productsites/footlocker.js')

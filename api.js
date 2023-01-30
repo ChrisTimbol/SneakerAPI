@@ -1,8 +1,6 @@
 require('dotenv').config()
 const path = require('path');
 const express = require('express')
-const mongoose = require('mongoose')
-const { Nike } = require('./productsites/nike.js');
 const Product = require('./models/productModel.js');
 const { MongoClient} = require('mongodb')
 const app = express()
