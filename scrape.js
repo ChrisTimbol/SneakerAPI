@@ -12,17 +12,18 @@ const { Jdsports } = require('./productsites/jdsports.js')
 // sleep
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@sneaker.1nvjvbv.mongodb.net/?retryWrites=true&w=majority`
 const client = new MongoClient(uri);
-const products = [];
+const products = []; // contains scrape data
 
+// Scrapes product sites
 async function Scrape(){
     try {
         await Nike(products)
         await Finishline(products)
-        /*  
+    /*  
         await FootLocker(products) 
         await Champs(products)
         await Jdsports(products)
-        */
+    */
     } catch(err){
         console.log(err)
     }
@@ -32,23 +33,20 @@ async function Scrape(){
 module.exports = {
     Scrape: Scrape,
 } 
-
-
-/* (async () => {
+//mongodb w/o mongoose for learning :D
+// This async function sends data to mongodb
+(async () => {
     try {
         await Scrape();
 
-        const database = client.db('sneakers')
-        const coll = database.collection('sneakerCollection')
-        for (let data of products) {
-            coll.updateOne({ data: data }, { $set: { data } }, { upsert: true })
-
+        const database = client.db('sneakers') // database cluster
+        const coll = database.collection('sneakerCollection') //  db collection: a group of doc's / in sql this is similar to a DB table
+        for (let product of products) { // Document: set of key-value pairs in products
+            coll.updateOne({ data: product }, { $set: { product } }, { upsert: true }) // sets 'data' to product, $set replaces the value of a product, upsert 'true' updates the product if it contains different keys
         }
     } finally {
         await client.close();
     }
-
-
-})().catch(console.dir) */
+})().catch(console.dir) 
 
 
