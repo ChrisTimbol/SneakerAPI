@@ -21,14 +21,15 @@ I built this project to learn more about web scraping, while doing that this pro
 
 ## How to use?
 
-#### Unfortunately not able to host due to the cost to host a server.
+#### Check out live site at https://sneaker-api.vercel.app/
+#### or 
 #### so must clone the github
 
 You will need [Node.js](https://nodejs.org) version 8.0 or greater installed on your system.
 ```
 npm install
 ```
-**need firebase API keys added to use this project**
+**need your own mongoDB API keys added, to use this project locally**
 
 Run the development server.
 ```bash
