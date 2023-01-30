@@ -10,7 +10,7 @@ I built this project to learn more about web scraping, while doing that this pro
 - playwright codegen is such an easy way to find selectors 
 - send data to mongodb
 - pull data from mongodb w/ client w/o mongoose
-- uploading to heroku with build packs
+- hosting a serverless api on vercel
 - create an api
 
 ## Framework/Libraries used
