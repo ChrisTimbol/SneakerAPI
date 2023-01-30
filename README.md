@@ -19,6 +19,11 @@ I built this project to learn more about web scraping, while doing that this pro
 - express
 - mongodb
 
+## Screenshots
+![image](https://user-images.githubusercontent.com/23703863/215542839-7c90d3a1-2e36-4226-9a64-15d271202a28.png)
+
+
+
 ## How to use?
 
 #### Check out live site at https://sneaker-api.vercel.app/
