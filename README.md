@@ -10,8 +10,13 @@ I built this project to learn more about web scraping, while doing that this pro
 - playwright codegen is such an easy way to find selectors 
 - send data to mongodb
 - pull data from mongodb w/ client w/o mongoose
+<<<<<<< HEAD
 - uploading to heroku with build packs
 - create JSON api
+=======
+- hosting a serverless api on vercel
+- create an api
+>>>>>>> 879ff9cf918f95d701c9d7cd04dd11177bdfb04a
 
 ## Framework/Libraries used
  Built with 
@@ -19,16 +24,22 @@ I built this project to learn more about web scraping, while doing that this pro
 - express
 - mongodb
 
+## Screenshots
+![image](https://user-images.githubusercontent.com/23703863/215542839-7c90d3a1-2e36-4226-9a64-15d271202a28.png)
+
+
+
 ## How to use?
 
-#### Unfortunately not able to host due to the cost to host a server.
+#### Check out live site at https://sneaker-api.vercel.app/
+#### or 
 #### so must clone the github
 
 You will need [Node.js](https://nodejs.org) version 8.0 or greater installed on your system.
 ```
 npm install
 ```
-**need firebase API keys added to use this project**
+**need your own mongoDB API keys added, to use this project locally**
 
 
 If you would like it to use your own database, you must change the uri in api.js
