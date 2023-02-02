@@ -11,7 +11,7 @@ I built this project to learn more about web scraping, while doing that this pro
 - send data to mongodb
 - pull data from mongodb w/ client w/o mongoose
 - uploading to heroku with build packs
-- create an api
+- create JSON api
 
 ## Framework/Libraries used
  Built with 
@@ -30,15 +30,14 @@ npm install
 ```
 **need firebase API keys added to use this project**
 
-Run the development server.
-```bash
-node start
-```
+
 If you would like it to use your own database, you must change the uri in api.js
 then you can call 
 ```bash
 node scrape
 ```
-to scrape and fill your db 
 
+```bash
+node start
+```
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
