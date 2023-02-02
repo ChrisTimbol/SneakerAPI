@@ -11,7 +11,7 @@ const client = new MongoClient(uri);
 app.get('/', async (req, res) => {
     const database = client.db('sneakers') 
     const coll = database.collection('sneakerCollection')
-    coll.find({}).toArray( (err, product) => { /* finds all elements in db collection then sends to '/' */
+    coll.find({}).toArray( (err, product) => { /* finds all elements in db collection then sends to '/' still works even though toArray is deprecated */
         res.send(product)
     })
 }) 
