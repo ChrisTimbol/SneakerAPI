@@ -16,7 +16,6 @@ I built this project to learn more about web scraping, while doing that this pro
 =======
 - hosting a serverless api on vercel
 - create an api
->>>>>>> 879ff9cf918f95d701c9d7cd04dd11177bdfb04a
 
 ## Framework/Libraries used
  Built with 
